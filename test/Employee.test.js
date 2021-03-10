@@ -5,7 +5,6 @@ const Employee = require("../lib/Employee");
 
 test("Can instantiate Employee instance", () => {
     const employee = new Employee();
-    // FIXME:you want the type of the instance to be an object... or possibly instance of? it is passing like this..
     expect(typeof(employee)).toBe("object");
 });
 
