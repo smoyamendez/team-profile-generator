@@ -57,7 +57,7 @@ const managerQuestions = [
         type: 'list',
         message: 'Which type of team member would you like to add?',
         name: 'role',
-        choices:  ['Manager', 'Engineer', 'Intern', 'I do not need to add anymore members'],
+        choices:  ['Engineer', 'Intern', 'I do not need to add anymore members'],
     }
 ]
 const engineerQuestions = [
@@ -89,7 +89,7 @@ const engineerQuestions = [
         type: 'list',
         message: 'Which type of team member would you like to add?',
         name: 'role',
-        choices:  ['Manager', 'Engineer', 'Intern', 'I do not need to add anymore members'],
+        choices:  ['Engineer', 'Intern', 'I do not need to add anymore members'],
     }
 ]
 const internQuestions = [
@@ -121,7 +121,7 @@ const internQuestions = [
         type: 'list',
         message: 'Which type of team member would you like to add?',
         name: 'role',
-        choices:  ['Manager', 'Engineer', 'Intern', 'I do not need to add anymore members'],
+        choices:  ['Engineer', 'Intern', 'I do not need to add anymore members'],
     }
 ]
 
@@ -145,20 +145,40 @@ function initAll() {
     })
 }
 
-function internDetails () {
-    inquirer.prompt(internQuestions)
-    .then((answers) => {
-        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
-        employees.push(intern);
-    })
-}
 function engineerDetails () {
     inquirer.prompt(engineerQuestions)
     .then((answers) => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         employees.push(engineer);
+        
+        if(answers.role === "Engineer") {
+            engineerDetails();
+        } else if (answers.role === "Intern") {
+            internDetails();
+        } else {
+            console.log('Thanks for adding your team members');
+            return;
+        }
     })
 }
+
+function internDetails () {
+    inquirer.prompt(internQuestions)
+    .then((answers) => {
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        employees.push(intern);
+        
+        if(answers.role === "Engineer") {
+            engineerDetails();
+        } else if (answers.role === "Intern") {
+            internDetails();
+        } else {
+            console.log('Thanks for adding your team members');
+            return;
+        }
+    })
+}
+console.log(employees);
 
 initAll();
 
