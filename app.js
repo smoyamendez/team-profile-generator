@@ -139,9 +139,10 @@ function initAll() {
             internDetails();
         } else {
             console.log('Thanks for adding your team members');
+            renderHTML();
             return;
         }
-        
+    
     })
 }
 
@@ -157,6 +158,7 @@ function engineerDetails () {
             internDetails();
         } else {
             console.log('Thanks for adding your team members');
+            renderHTML();
             return;
         }
     })
@@ -174,13 +176,12 @@ function internDetails () {
             internDetails();
         } else {
             console.log('Thanks for adding your team members');
+            renderHTML();
             return;
         }
     })
 }
-console.log(employees);
 
-initAll();
 
 
 // After the user has input all employees desired, call the `render` function (required
@@ -193,3 +194,16 @@ initAll();
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
+function renderHTML() {
+    fs.mkdir(OUTPUT_DIR);
+    fs.writeFile(outputPath, render(employees), err =>{
+        if (err) {
+            return console.log(err);
+        } else {
+            console.log("File generated");
+        }
+    })
+}
+
+// Calling functions
+initAll();
