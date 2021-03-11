@@ -195,7 +195,9 @@ function internDetails () {
 // does not.
 
 function renderHTML() {
-    fs.mkdir(OUTPUT_DIR);
+    if(!fs.existsSync(OUTPUT_DIR)){
+        fs.mkdirSync(OUTPUT_DIR);
+    }
     fs.writeFile(outputPath, render(employees), err =>{
         if (err) {
             return console.log(err);
