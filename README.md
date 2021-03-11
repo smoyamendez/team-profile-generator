@@ -24,7 +24,7 @@ Once that is downloaded, make sure you are in the root of the folder where the i
 ---
 Here is a video walk through of how you would use this generator after installation:
 
-![Generator Video Walkthrough](walkthrough-video.gif)
+![Generator Video Walkthrough](profile-generator-walkthrough.gif)
 
 
 ## Contributing
