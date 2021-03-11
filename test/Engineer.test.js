@@ -7,12 +7,12 @@ test("Can set GitHUb account via constructor", () => {
     const test = "username";
     const engineer = new Engineer("Sommer", 1, 'sommer@sommer.com', test);
 
-    expect(engineer.username).toEqual(test);
+    expect(engineer.github).toEqual(test);
 });
 
 test("getRole() should return \"Engineer\"", () => {
     const test = 'Engineer';
-    const engineer = new Engineer("Sommer", 1, 'sommer@sommer.com', 'username');
+    const engineer = new Engineer("Sommer", 1, 'sommer@sommer.com', 'github');
 
     expect(engineer.getRole()).toBe(test);
 });
