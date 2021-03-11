@@ -102,7 +102,7 @@ const internQuestions = [
     {
         type: 'input',
         message: 'What is the team intern\'s id?',
-        name: 'd'
+        name: 'id'
     },
     
     {
